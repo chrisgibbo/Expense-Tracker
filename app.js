@@ -3,6 +3,8 @@ require("express-async-errors");
 const express = require("express");
 const errorHandler = require("./handlers/errorHandlers");
 
+require("dotenv").config();
+
 const app = express();
 
 app.use(express.json());
