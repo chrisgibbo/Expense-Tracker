@@ -9,6 +9,7 @@ const usersSchema = new mongooose.Schema({
   email: {
     type: String,
     required: [true, "email is required"],
+    unique: true,
   },
 });
 
