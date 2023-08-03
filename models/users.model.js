@@ -3,12 +3,12 @@ const mongooose = require("mongoose");
 const usersSchema = new mongooose.Schema({
   full_name: {
     type: String,
-    required: [true, "Please enter your full name"],
+    required: [true, "Full name is required"],
   },
 
   email: {
     type: String,
-    required: [true, "Please enter your email"],
+    required: [true, "email is required"],
   },
 });
 
