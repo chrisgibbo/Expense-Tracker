@@ -5,6 +5,8 @@ const errorHandler = require("./handlers/errorHandlers");
 
 const app = express();
 
+app.use(express.json());
+
 // End of all routes
 
 app.use(errorHandler);
