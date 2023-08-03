@@ -18,7 +18,7 @@ mongoose
 
 // Modules initialization
 
-require("./models/User");
+require("./models/users.model");
 
 app.use(express.json());
 
