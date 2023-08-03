@@ -16,6 +16,10 @@ mongoose
     console.log("mongo connection failed");
   });
 
+// Modules initialization
+
+require("./models/User");
+
 app.use(express.json());
 
 // End of all routes
