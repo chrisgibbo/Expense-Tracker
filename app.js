@@ -7,9 +7,14 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 
 const app = express();
-mongoose.connect(process.env.mongo_connection, {}).then(() => {
-  console.log("Connected to MongoDB");
-});
+mongoose
+  .connect(process.env.mongo_connection, {})
+  .then(() => {
+    console.log("Connected to MongoDB");
+  })
+  .catch((err) => {
+    console.log("mongo connection failed");
+  });
 
 app.use(express.json());
 
