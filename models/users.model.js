@@ -11,6 +11,11 @@ const usersSchema = new mongooose.Schema({
     required: [true, "email is required"],
     unique: true,
   },
+
+  password: {
+    type: String,
+    required: [true, "password is required"],
+  },
 });
 
 const usersModel = mongooose.model("users", usersSchema);
