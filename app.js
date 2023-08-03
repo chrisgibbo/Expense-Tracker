@@ -2,10 +2,12 @@ require("express-async-errors");
 
 const express = require("express");
 const errorHandler = require("./handlers/errorHandlers");
+const mongoose = require("mongoose");
 
 require("dotenv").config();
 
 const app = express();
+mongoose.connect();
 
 app.use(express.json());
 
