@@ -16,6 +16,12 @@ const usersSchema = new mongooose.Schema({
     type: String,
     required: [true, "password is required"],
   },
+
+  balanace: {
+    type: Number,
+    required: [true, "balance is required"],
+    default: 0,
+  },
 });
 
 const usersModel = mongooose.model("users", usersSchema);
