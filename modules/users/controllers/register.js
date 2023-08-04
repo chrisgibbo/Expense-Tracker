@@ -12,7 +12,7 @@ const register = async (req, res) => {
     balance: balance,
   });
 
-  res.status(200).json({
+  res.status(201).json({
     status: "User Registered Successfully",
   });
 };
