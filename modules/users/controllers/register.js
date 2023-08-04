@@ -13,7 +13,7 @@ const register = async (req, res) => {
   });
 
   res.status(200).json({
-    status: "Hello from the server",
+    status: "User Registered Successfully",
   });
 };
 
