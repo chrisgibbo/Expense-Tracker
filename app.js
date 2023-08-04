@@ -23,6 +23,8 @@ require("./models/users.model");
 
 app.use(express.json());
 
+// Routes ...
+
 app.use("/api/users", userRoutes);
 
 // End of all routes
