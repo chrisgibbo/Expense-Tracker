@@ -17,7 +17,7 @@ const usersSchema = new mongooose.Schema({
     required: [true, "password is required"],
   },
 
-  balanace: {
+  balance: {
     type: Number,
     required: [true, "balance is required"],
     default: 0,
