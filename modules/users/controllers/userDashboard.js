@@ -1,6 +1,6 @@
-const userDashboard = () => {
+const userDashboard = (req, res) => {
   res.status(200).json({
-    status: "Hello from userRegister!!",
+    status: "Hello from userDashboard!!",
   });
 };
 
