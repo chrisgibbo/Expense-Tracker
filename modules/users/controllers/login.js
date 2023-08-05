@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
 
 const login = async (req, res) => {
   const usersModel = mongoose.model("users");
