@@ -12,7 +12,11 @@ const login = async (req, res) => {
 
   if (!getUser) throw "This email does not exist in the system!";
 
-  const comparePassoword = await bcrypt.compare;
+  const comparePassoword = await bcrypt.compare(passowrd, getUser.password);
+
+  if (!comparePassoword) throw "Email or Password do not match";
+
+  //   success response ....
 
   res.status(200).json({
     status: "success",
