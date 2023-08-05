@@ -5,6 +5,14 @@ const register = async (req, res) => {
 
   const { email, password, confirm_password, name, balance } = req.body;
 
+  // vailidation ...
+
+  if (!email) throw "Email is required";
+  if (password) throw "Password is required";
+  if (password.length < 5) throw "Password must be at least 5 characters";
+
+  if (!name) throw "Name is required";
+
   const getDuplicateEmail = await usersModel.findOne({
     email: email,
   });
