@@ -9,6 +9,8 @@ const register = async (req, res) => {
     email: email,
   });
 
+  if (getDuplicateEmail) throw "This email already exists";
+
   await usersModel.create({
     name: name,
     email: email,
