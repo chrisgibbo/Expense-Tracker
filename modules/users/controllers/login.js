@@ -13,20 +13,24 @@ const login = async (req, res) => {
 
   if (!getUser) throw "This email does not exist in the system!";
 
-  const comparePassoword = await bcrypt.compare(passowrd, getUser.password);
+  const comparePassword = await bcrypt.compare(password, getUser.password);
 
-  if (!comparePassoword) throw "Email or Password do not match";
+  if (!comparePassword) throw "Email or Password do not match";
 
-  const accessToken = await jsonwebtoken.sign({
-    _id: getUser._id,
-    name: getUser.name,
-  });
+  const accessToken = await jsonwebtoken.sign(
+    {
+      _id: getUser._id,
+      name: getUser.name,
+    },
+    process.env.jwt_salt
+  );
 
   //   success response ....
 
   res.status(200).json({
     status: "success",
     message: "User logged in successfully",
+    accessToken: accessToken,
   });
 };
 
