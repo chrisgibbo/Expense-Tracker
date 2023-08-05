@@ -11,8 +11,6 @@ const login = async (req, res) => {
 
   if (!getUser) throw "This email does not exist in the system!";
 
-  console.log(getUser);
-
   res.status(200).json({
     status: "success",
     message: "User logged in successfully",
