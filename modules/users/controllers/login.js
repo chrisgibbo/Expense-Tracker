@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
-const sjonwebtoken = require("sjonwebtoken");
+const jsonwebtoken = require("jsonwebtoken");
 
 const login = async (req, res) => {
   const usersModel = mongoose.model("users");
@@ -17,7 +17,11 @@ const login = async (req, res) => {
 
   if (!comparePassoword) throw "Email or Password do not match";
 
-  const accessToken = await Jsonwebtoken.sign();
+  const accessToken = await jsonwebtoken.sign({
+    _id: getUser._id,
+    name: getUser.name,
+  });
+
   //   success response ....
 
   res.status(200).json({
