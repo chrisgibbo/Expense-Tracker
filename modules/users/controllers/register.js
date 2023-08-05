@@ -12,6 +12,9 @@ const register = async (req, res) => {
   if (password.length < 5) throw "Password must be at least 5 characters";
 
   if (!name) throw "Name is required";
+  if (password !== confirm_password)
+    throw "Password and Confirmed Password do not match";
+  f;
 
   const getDuplicateEmail = await usersModel.findOne({
     email: email,
