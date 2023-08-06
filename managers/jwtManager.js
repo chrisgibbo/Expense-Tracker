@@ -1,4 +1,4 @@
-const jsonwebtoken = require("jsonweb");
+const jsonwebtoken = require("jsonwebtoken");
 
 const jwtManager = (user) => {
   const accessToken = jsonwebtoken.sign(
