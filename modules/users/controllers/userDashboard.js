@@ -1,9 +1,12 @@
 const mongoose = require("mongoose");
 
-const userDashboard = (req, res) => {
+const userDashboard = async (req, res) => {
+  const usersModel = mongoose.model("users");
   console.log(req.user);
 
-  const usersModel = mongoose.model("users");
+  const getUser = await usersModel.findOne({
+    _id: req.user._id,
+  });
 
   res.status(200).json({
     status: "Hello from userDashboard!!",
