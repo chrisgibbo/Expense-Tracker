@@ -1,27 +1,26 @@
-const { default: mongoose } = require("mongoose");
-const mongooose = require("mongoose");
+const mongoose = require("mongoose");
 
-const transactionsSchema = new mongooose.Schema(
+const transactionsSchema = new mongoose.Schema(
   {
     user_id: {
-      type: mongoose.Schema.Types.OjectsId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: "users",
       required: true,
     },
 
     amount: {
-      type: number,
+      type: Number,
       required: true,
     },
 
-    transactions_type: {
-      type: string,
+    transaction_type: {
+      type: String,
       required: true,
       enum: ["income", "expense"],
     },
 
     remarks: {
-      type: string,
+      type: String,
       required: true,
     },
   },
@@ -30,6 +29,6 @@ const transactionsSchema = new mongooose.Schema(
   }
 );
 
-const transactionsModel = mongooose.model("users", transactionsSchema);
+const transactionsModel = mongoose.model("transactions", transactionsSchema);
 
 module.exports = transactionsModel;
