@@ -18,7 +18,7 @@ const login = async (req, res) => {
 
   if (!comparePassword) throw "Email or Password do not match";
 
-  const accessToken = jwtManager;
+  const accessToken = jwtManager(getUser);
 
   //   success response ....
 
