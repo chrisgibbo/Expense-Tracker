@@ -5,8 +5,14 @@ const auth = (req, res, next) => {
 
   const accessToken = req.headers.authorization.replace("Bearer ", "");
 
-  const jwt_payload = jsonwebtoken.verify(accessToken, process.env.jwt_salt);
-
+  try {
+    const jwt_payload = jsonwebtoken.verify(accessToken, process.env.jwt_salt);
+  } catch (e) {
+    res.status(401).json({
+      status: "failed",
+      message: "Unauthorized",
+    });
+  }
   console.log(jwt_payload);
 
   next();
