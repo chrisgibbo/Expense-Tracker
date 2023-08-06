@@ -1,7 +1,15 @@
+const jsonwebtoken = require("jsonwebtoken");
+
 const auth = (req, res, next) => {
   console.log(req.headers);
 
   const accessToken = req.headers.authorization.replace("Bearer ", "");
+
+  const JWTverification = jsonwebtoken.verify(
+    accessToken,
+    process.env.jwt_salt
+  );
+
   console.log(accessToken);
 
   next();
