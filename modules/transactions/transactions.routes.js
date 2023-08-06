@@ -5,7 +5,7 @@ const addIncome = require("./controllers/addIncome");
 
 const transactionRoutes = express.Router();
 
-userRoutes.use(auth);
+transactionRoutes.use(auth);
 
 transactionRoutes.post(".addIncome", addIncome);
 
