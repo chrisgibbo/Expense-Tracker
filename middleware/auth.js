@@ -14,7 +14,6 @@ const auth = (req, res, next) => {
     });
     return;
   }
-  console.log(jwt_payload);
 
   next();
 };
