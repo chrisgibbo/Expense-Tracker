@@ -17,6 +17,12 @@ const transactionsSchema = new mongooose.Schema(
     transactions_type: {
       type: string,
       required: true,
+      enum: ["income", "expense"],
+    },
+
+    remarks: {
+      type: string,
+      required: true,
     },
   },
   {
