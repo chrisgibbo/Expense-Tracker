@@ -20,7 +20,7 @@ mongoose
 // Modules initialization
 
 require("./models/users.model");
-
+require("./models/transactions.model");
 app.use(express.json());
 
 // Routes ...
