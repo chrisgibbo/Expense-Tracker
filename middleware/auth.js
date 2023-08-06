@@ -12,6 +12,7 @@ const auth = (req, res, next) => {
       status: "failed",
       message: "Unauthorized",
     });
+    return;
   }
   console.log(jwt_payload);
 
