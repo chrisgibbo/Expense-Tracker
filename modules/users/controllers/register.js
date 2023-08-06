@@ -33,7 +33,7 @@ const register = async (req, res) => {
     balance: balance,
   });
 
-  const accessToken = jwtManager(getUser);
+  const accessToken = jwtManager(createdUser);
 
   res.status(201).json({
     status: "User Registered Successfully",
