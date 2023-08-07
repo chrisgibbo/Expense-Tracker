@@ -3,8 +3,17 @@ const mongoose = require("mongoose");
 const addIncome = (req, res) => {
   const usersModel = mongoose.model("users");
   const transactionsModel = mongoose.model("transactions");
+
+  const { amount, remarks } = req.body;
+
+  if (!amount) throw "Amount is required";
+  if (!remarks) throw "Remarks is required";
+
+  if (remarks.length < 5) throw "Remarks must be at least 5 characters";
+
   res.status(200).json({
-    status: "Hello from add Income!",
+    status: "Success!",
+    message: "Income added successfully",
   });
 };
 
