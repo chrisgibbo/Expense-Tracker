@@ -22,6 +22,20 @@ const addIncome = async (req, res) => {
     transaction_type: "income",
   });
 
+  await usersModel.updateOne(
+    {
+      _id: req.user._id,
+    },
+    {
+      $inc: {
+        balance: amount,
+      },
+    },
+    {
+      runValidators: true,
+    }
+  );
+
   res.status(200).json({
     status: "Success!",
     message: "Income added successfully",
