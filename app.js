@@ -27,7 +27,7 @@ app.use(express.json());
 // Routes ...
 
 app.use("/api/users", userRoutes);
-app.use("api/transactions", transactionRoutes);
+app.use("/api/transactions", transactionRoutes);
 // End of all routes
 
 app.use(errorHandler);
