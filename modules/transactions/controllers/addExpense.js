@@ -19,7 +19,7 @@ const addExpense = async (req, res) => {
     user_id: req.user._id,
     amount: amount,
     remarks: remarks,
-    transaction_type: "income",
+    transaction_type: "expense",
   });
 
   await usersModel.updateOne(
@@ -28,7 +28,7 @@ const addExpense = async (req, res) => {
     },
     {
       $inc: {
-        balance: amount,
+        balance: amount * -1,
       },
     },
     {
