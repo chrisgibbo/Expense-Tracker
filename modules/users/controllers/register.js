@@ -48,6 +48,7 @@ const register = async (req, res) => {
     to: createdUser.email,
     from: "info@expensetracker.com",
     text: "Welcome to expense tracker, We hope you can manage your expense easily from our platform",
+    html: "<h1>Welcome to expense tracker</h1> <br> We hope you can manage your expense easily from our platform",
     subject: "Welcome to Expense Tracker",
   });
 
