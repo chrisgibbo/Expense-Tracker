@@ -11,13 +11,17 @@ const userDashboard = async (req, res) => {
     })
     .select("-password");
 
-  const transactions = await transactionModel.find({
-    user_id: req.user._id,
-  });
+  const transactions = await transactionModel
+    .find({
+      user_id: req.user._id,
+    })
+    .sort("createdAt")
+    .limit(2);
 
   res.status(200).json({
     status: "Success!",
     data: getUser,
+    transactions,
   });
 };
 
