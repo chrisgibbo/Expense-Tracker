@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 
 const getTransactions = async (req, res) => {
-  const transactionmodel = mongoose.model("transactions");
+  const transactionModel = mongoose.model("transactions");
 
   const transactions = await transactionModel.find({
-    user_id: req.user.id,
+    user_id: req.user._id,
   });
 
   res.status(200).json({
