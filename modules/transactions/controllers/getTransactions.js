@@ -1,9 +1,15 @@
 const mongoose = require("mongoose");
 
-const getTransactions = (req, res) => {
+const getTransactions = async (req, res) => {
   const transactionmodel = mongoose.model("transactions");
+
+  const transactions = await transactionModel.find({
+    user_id: req.user.id,
+  });
+
   res.status(200).json({
-    status: "Transactions",
+    status: "Success",
+    data: transactions,
   });
 };
 
