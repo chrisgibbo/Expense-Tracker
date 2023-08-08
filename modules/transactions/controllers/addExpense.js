@@ -38,7 +38,7 @@ const addExpense = async (req, res) => {
 
   res.status(200).json({
     status: "Success!",
-    message: "Income added successfully",
+    message: "Expense was successfully",
   });
 };
 
