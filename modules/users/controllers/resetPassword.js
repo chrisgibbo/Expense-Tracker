@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
 
 const resetPassword = async (req, res) => {
   const usersModel = mongoose.model("users");
@@ -17,6 +18,20 @@ const resetPassword = async (req, res) => {
   });
 
   if (!getUserWithResetCode) throw "Reset code does not match reset code!";
+
+  const hashedPassword = await bcrypt.hash(password, 12);
+
+  await usersModel.updateOne(
+    {
+      email: email,
+    },
+    {
+      password: hashedPassword,
+    },
+    {
+      runValidators: true,
+    }
+  );
 
   res.status(200).json({
     status: "Reset Password!",

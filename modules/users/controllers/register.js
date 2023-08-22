@@ -22,7 +22,7 @@ const register = async (req, res) => {
     email: email,
   });
 
-  const hashedPassword = await bcrypt.hash(password, 10);
+  const hashedPassword = await bcrypt.hash(password, 12);
 
   if (getDuplicateEmail) throw "This email already exists";
 
