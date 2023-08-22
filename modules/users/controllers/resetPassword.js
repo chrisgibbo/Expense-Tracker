@@ -19,7 +19,7 @@ const resetPassword = async (req, res) => {
 
   if (!getUserWithResetCode) throw "Reset code does not match reset code!";
 
-  const hashedPassword = await bcrypt.hash(password, 12);
+  const hashedPassword = await bcrypt.hash(new_password, 12);
 
   await usersModel.updateOne(
     {
