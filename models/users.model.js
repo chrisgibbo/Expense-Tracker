@@ -23,7 +23,12 @@ const usersSchema = new mongooose.Schema(
       required: [true, "balance is required"],
       default: 0,
     },
+
+    reset_code: {
+      type: Number,
+    },
   },
+
   {
     timestamps: true,
   }
