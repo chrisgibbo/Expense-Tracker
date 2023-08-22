@@ -9,7 +9,7 @@ const resetPassword = async (req, res) => {
   if (!email) throw "Email is required";
   if (!new_password) throw "Please provide new password!";
   if (!reset_code) throw "Please provide reset code!";
-  if (!new_password.length < 5)
+  if (new_password.length < 5)
     throw "Password must be at least 5 characters long!";
 
   const getUserWithResetCode = await usersModel.findOne({
