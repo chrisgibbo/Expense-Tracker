@@ -34,7 +34,8 @@ const resetPassword = async (req, res) => {
   );
 
   res.status(200).json({
-    status: "Reset Password!",
+    status: "success!",
+    message: "Password has been resetted successfully",
   });
 };
 
