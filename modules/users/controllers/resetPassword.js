@@ -16,6 +16,8 @@ const resetPassword = async (req, res) => {
     reset_code: reset_code,
   });
 
+  if (!getUserWithResetCode) throw "Reset code does not match reset code!";
+
   res.status(200).json({
     status: "Reset Password!",
   });
