@@ -27,6 +27,7 @@ const resetPassword = async (req, res) => {
     },
     {
       password: hashedPassword,
+      reset_code: "",
     },
     {
       runValidators: true,
