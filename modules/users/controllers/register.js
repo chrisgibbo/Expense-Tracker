@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const jwtManager = require("../../../managers/jwtManager");
-const nodemailer = require("nodemailer");
+const emailManager = require("../../../managers/emailManager");
 
 const register = async (req, res) => {
   const usersModel = mongoose.model("users");
@@ -35,22 +35,13 @@ const register = async (req, res) => {
 
   const accessToken = jwtManager(createdUser);
 
-  var transport = nodemailer.createTransport({
-    host: "sandbox.smtp.mailtrap.io",
-    port: 2525,
-    auth: {
-      user: "0f221d3f69109c",
-      pass: "756af8fb5638e1",
-    },
-  });
-
-  await transport.sendMail({
-    to: createdUser.email,
-    from: "info@expensetracker.com",
-    text: "Welcome to expense tracker, We hope you can manage your expense easily from our platform",
-    html: "<h1>Welcome to expense tracker</h1> <br> We hope you can manage your expense easily from our platform",
-    subject: "Welcome to Expense Tracker",
-  });
+  await emailManager(
+    createdUser,
+    email,
+    "Welcome to expense tracker, We hope you can manage your expense easily from our platform",
+    "<h1>Welcome to expense tracker</h1> <br> We hope you can manage your expense easily from our platform",
+    "Welcome to Expense Tracker"
+  );
 
   res.status(201).json({
     status: "User Registered Successfully",
