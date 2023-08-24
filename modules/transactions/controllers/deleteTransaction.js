@@ -3,6 +3,7 @@ const validator = require("validator");
 
 const deleteTransaction = async (req, res) => {
   const transactionModel = mongoose.model("transactions");
+  const usersModel = mongoose.model("users");
 
   const { transaction_id } = req.params;
 
@@ -14,6 +15,36 @@ const deleteTransaction = async (req, res) => {
   });
 
   if (!getTransaction) throw "Transaction not found";
+
+  if (getTransaction.transaction_type === "income") {
+    await usersModel.updateOne(
+      {
+        _id: getTransaction.user_id,
+      },
+      {
+        $inc: {
+          balance: getTransaction.amount * -1,
+        },
+      },
+      {
+        runValidators: true,
+      }
+    );
+  } else {
+    await usersModel.updateOne(
+      {
+        _id: getTransaction.user_id,
+      },
+      {
+        $inc: {
+          balance: getTransaction.amount,
+        },
+      },
+      {
+        runValidators: true,
+      }
+    );
+  }
 
   await transactionModel.deleteOne({
     _id: transaction_id,
