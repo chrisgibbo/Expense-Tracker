@@ -4,7 +4,7 @@ const validator = require("validator");
 const editTransaction = async (req, res) => {
   const transactionModel = mongoose.model("transactions");
 
-  const { transaction_id } = req.body;
+  const { transaction_id, remarks, amount, transaction_type } = req.body;
 
   if (!transaction_id) throw "Transaction id is required";
 
