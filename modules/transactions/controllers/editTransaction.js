@@ -4,7 +4,7 @@ const validator = require("validator");
 const editTransaction = async (req, res) => {
   const transactionModel = mongoose.model("transactions");
 
-  const { transaction_id, remarks, amount, transaction_type } = req.body;
+  const { transaction_id, remarks } = req.body;
 
   if (!transaction_id) throw "Transaction id is required";
 
@@ -17,8 +17,20 @@ const editTransaction = async (req, res) => {
 
   if (!getTransaction) throw "Transaction not found";
 
+  await transactionModel.updateOne(
+    {
+      _id: transaction_id,
+    },
+    {
+      remarks,
+    },
+    {
+      runValidators: true,
+    }
+  );
+
   res.status(200).json({
-    status: "Edit Transaction",
+    status: "Updated Successfully",
   });
 };
 
